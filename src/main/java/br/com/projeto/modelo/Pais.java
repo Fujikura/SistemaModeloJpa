@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 
 @Entity
@@ -22,9 +25,16 @@ public class Pais implements Serializable{
     private Long codigo;
     
     @Column(name = "nome", nullable = false, length = 50)
+    @Length(max = 50, message = "O nome do país não pode ter mais de {max} caracteres")
+    @NotBlank(message = "O nome do país deve ser informado")
+    @NotNull(message = "O nome do país não pode ser nulo")
     private String nome;
     
     @Column(name = "iso", nullable = false, length = 5)
+    @Length(max = 5, message = "O iso do país não pode ter mais de {max} caracteres")
+    @NotBlank(message = "O iso do país deve ser informado")
+    @NotNull(message = "O iso do país não pode ser nulo")
+
     private String iso;
 
     public Pais() {

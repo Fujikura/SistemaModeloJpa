@@ -1,13 +1,12 @@
-package br.com.projeto.teste;
+package br.com.projeto.teste.pais;
 
 import br.com.projeto.modelo.Pais;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 
-public class TesteRemovePais {
+public class TesteAlterarPais {
     
     public static void main(String[] args) {
         
@@ -18,16 +17,17 @@ public class TesteRemovePais {
         
         
         try {
-            Pais pais = em.find(Pais.class, 3L);
-        
+            Pais pais = em.find(Pais.class, 1L);
+            pais.setNome("Brasil");
+            pais.setIso("BR");
             em.getTransaction().begin();
-            em.remove(pais);
+            em.merge(pais);
             em.getTransaction().commit();
         
-            System.out.println("Pais removido com sucesso!"); 
+            System.out.println("Pais alterado com sucesso!"); 
         } catch (Exception ex) {
             em.getTransaction().rollback();
-            System.out.println("Erro ao remover: " + ex.getMessage());
+            System.out.println("Erro ao alterar: " + ex.getMessage());
         }
         
         em.close();

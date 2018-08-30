@@ -1,4 +1,4 @@
-package br.com.projeto.teste;
+package br.com.projeto.teste.pais;
 
 import br.com.projeto.modelo.Pais;
 import javax.persistence.EntityManager;
