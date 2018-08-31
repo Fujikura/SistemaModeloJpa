@@ -22,7 +22,7 @@ public class Pais implements Serializable{
     @Id
     @SequenceGenerator(name = "seq_pais", sequenceName = "seq_pais", allocationSize = 1)
     @GeneratedValue(generator = "seq_pais", strategy = GenerationType.SEQUENCE)
-    private Long codigo;
+    private Long id;
     
     @Column(name = "nome", nullable = false, length = 50)
     @Length(max = 50, message = "O nome do país não pode ter mais de {max} caracteres")
@@ -40,8 +40,8 @@ public class Pais implements Serializable{
     public Pais() {
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -63,7 +63,7 @@ public class Pais implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.codigo);
+        hash = 79 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -79,12 +79,12 @@ public class Pais implements Serializable{
             return false;
         }
         final Pais other = (Pais) obj;
-        return Objects.equals(this.codigo, other.codigo);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Pais{" + "codigo=" + codigo + ", nome=" + nome + ", iso=" + iso + '}';
+        return "Pais{" + "codigo=" + id + ", nome=" + nome + ", iso=" + iso + '}';
     }
     
     

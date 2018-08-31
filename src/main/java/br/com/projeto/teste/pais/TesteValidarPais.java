@@ -1,10 +1,9 @@
 package br.com.projeto.teste.pais;
 
+import br.com.projeto.jpa.EntityManagerUtil;
 import br.com.projeto.modelo.Pais;
 import java.util.Set;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -13,13 +12,11 @@ public class TesteValidarPais {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("projeto");
-
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         Pais pais = new Pais();
-        pais.setNome("Argentina");
-        pais.setIso("AG");
+        pais.setNome("França");
+        pais.setIso("FR");
 
         try {
             em.getTransaction().begin();
@@ -42,7 +39,6 @@ public class TesteValidarPais {
             System.out.println("Erro ao inserir: " + ex.getMessage());
         } finally {
             em.close();
-            emf.close();
         }
     }
 }
